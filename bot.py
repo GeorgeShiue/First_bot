@@ -7,4 +7,4 @@ bot = commands.Bot(intents = discord.Intents.all(), command_prefix = '[') #inten
 async def on_ready():
     print(">> Bot is online <<")
 
-bot.run("MTA2ODU1ODg5MzgzNzQ2MzU3Mg.GhKy1b.LHGKnJcbLhmvwHWe5RC5QK2CzIrWiuYUGEMFaE") #discord bot token
+bot.run("MTA2ODU1ODg5MzgzNzQ2MzU3Mg.GUu1Kb.KqLVZBYas5TAgGj1ywzysfzN1vT6Iit3-FQmdc") #discord bot token
