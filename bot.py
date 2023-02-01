@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
 import json
-import random
+import os
+import asyncio
 
 with open('setting.json', mode = 'r', encoding = 'utf8') as jfile:
     jdata = json.load(jfile) #開啟json設定檔並讀取裡面的所有資料
@@ -22,20 +23,41 @@ async def on_member_remove(member):
     channel = bot.get_channel(int(jdata["TEST_CHANNEL"]))
     await channel.send(f'adios {member}')
 
-@bot.command() #指令
-async def ping(ctx): #使用者使用ping指令時，ctx便會包含使用者名稱、id、所在伺服器、所在頻道等訊息
-    await ctx.send(f'{round(bot.latency*1000, 2)}ms') #依據ctx所提供的訊息傳送ping值(bot.latency)
+@bot.command()
+async def wow(ctx):
+    await ctx.send("wow")
 
 @bot.command() #指令
-async def random_pic(ctx): 
-    random_pic_path = random.choice(jdata['pic']) #設定變數來隨機儲存其中一個目標檔案路徑
-    pic = discord.File(random_pic_path) #設定變數來儲存目標檔案
-    #pic = discord.File(jdata["pic"]) #設定變數並放入目標檔案路徑來儲存目標檔案
-    await ctx.send(file = pic) #傳送檔案
+async def load(ctx, extension):
+    await bot.load_extension(f'cmds.{extension}') #讓bot可以load特定的extension
+    await ctx.send(f'Loaded {extension} is done.')
 
 @bot.command() #指令
-async def random_web_pic(ctx): 
-    random_pic_url = random.choice(jdata['pic_url']) #設定變數隨機儲存其中一個目標圖片的網址
-    await ctx.send(random_pic_url) #傳送網址
+async def unload(ctx, extension):
+    await bot.unload_extension(f'cmds.{extension}') #讓bot可以unload特定的extension
+    await ctx.send(f'Unloaded {extension} is done.')
 
-bot.run(jdata["TOKEN"]) #利用json設定檔存取裡面的discord bot token(類似字典)
+@bot.command() #指令
+async def reload(ctx, extension):
+    await bot.reload_extension(f'cmds.{extension}') #讓bot可以reload特定的extension
+    await ctx.send(f'Reloaded {extension} is done.')
+
+#以下為新作法
+async def main():
+    for filename in os.listdir("./cmds"):
+        if filename.endswith("py"):
+            await bot.load_extension(f"cmds.{filename[:-3]}")
+    await bot.start(jdata["TOKEN"])
+
+if __name__=="__main__":
+    asyncio.run(main())
+
+"""  
+for file_name in os.listdir('./cmds'): #利用os.listdir遍歷目標資料夾底下的所有檔案
+    print(file_name)
+    if file_name.endswith('.py'): #若檔案名稱結尾為.py
+        bot.load_extension(f'cmds.{file_name[:-3]}') #從cmds資料夾裡導入裡面的檔案，[:-3]可.py從檔名中省略  
+
+if __name__ == '__main__':
+    bot.run(jdata["TOKEN"]) #利用json設定檔存取裡面的discord bot token(類似字典)
+"""
