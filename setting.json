@@ -1,7 +1,13 @@
 {
-    "TOKEN": "MTA2ODU1ODg5MzgzNzQ2MzU3Mg.GUu1Kb.KqLVZBYas5TAgGj1ywzysfzN1vT6Iit3-FQmdc",
+    "TOKEN": "MTA2ODU1ODg5MzgzNzQ2MzU3Mg.Gb0FTM.V91Z0pAfTDwKlQT3EbQDu9f-jNSo_5ya4bQ7WQ",
     "TEST_CHANNEL": "1069466066759196783",
-    
-    "pic":["C:\\Users\\user\\Documents\\GitHub\\First_bot\\pic\\Lena.jpg", "C:\\Users\\user\\Documents\\GitHub\\First_bot\\pic\\mark_5.gif"],
-    "pic_url": ["https://static.wikia.nocookie.net/03add322-b615-46a9-aa27-f412fba5fc35/scale-to-width/755", "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1601414631i/30169686._SY540_.jpg"]
+    "time": "2125",
+    "pic": [
+        "C:\\Users\\user\\Documents\\GitHub\\First_bot\\pic\\Lena.jpg",
+        "C:\\Users\\user\\Documents\\GitHub\\First_bot\\pic\\mark_5.gif"
+    ],
+    "pic_url": [
+        "https://static.wikia.nocookie.net/03add322-b615-46a9-aa27-f412fba5fc35/scale-to-width/755",
+        "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1601414631i/30169686._SY540_.jpg"
+    ]
 }
